@@ -32,7 +32,7 @@ navigation:
    url: /index.html
  - title: Dendro
    url: /dendro
- - title: Data Model
+ - title: Sunburst
    url: /sunburst
 
 sass:
