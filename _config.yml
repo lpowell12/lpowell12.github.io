@@ -38,3 +38,5 @@ navigation:
 sass:
   sass_dir:          assets/_scss
   #style:            :compressed
+
+theme: jekyll-theme-slate
