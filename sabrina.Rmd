@@ -1,0 +1,47 @@
+---
+title: "sabrina"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+# Create Plotly Pie Chart for Agency Personnel Spending
+
+# Add packages
+#install.packages("plotly")
+library(plotly)
+setwd("C:\\Users\\lpowel06\\Documents\\sabrina for github")
+
+# Read in agency personnel spending data set
+agency_data <- readRDS(file="data-agencyspendpiechart.RData")
+  #agency_data <- readRDS(file="Output\\data-agencyspendpiechart.RData")
+
+# Create Chart
+colors <- c("#00b5db", "#00caec",  "#143e64", "#aae1f4", "#bcbec2",  "#007faa", 
+            "#6e747e","#0086c8", "#2869a4", "#0f767f", "#00928f", "#215b69", "#2c2c2c", "#414b57",
+            "#024558", "#416878")
+textform <- list(
+  family="Open Sans", 
+  size = 12)
+plot_ly(agency_data, labels= ~Group.1, values= ~x, type='pie',
+        textposition="outside",
+        textinfo = "label",
+        insidetextfont=list(color="#2c2c2c", family="Arial"),
+        hoverinfo = "text", 
+        text= ~paste(Group.1, "\n",
+                     percent_c, "%", "\n",
+                     "Personnel Obligations: $", obligations, "million"), 
+        marker=list(colors=colors, 
+                    line=list(color="#e7f5f9", width=1)))  %>%
+  layout(title="Personnel Budgets Across Government", font= list(size=12, color="#2c2c2c"),
+         xaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE),
+         yaxis=list(showgrid=FALSE, zeroline=FALSE, showticklabels=FALSE)) 
+
+htmlwidgets::saveWidget(as_widget(last_plot()), "agency_pie_chart.html", selfcontained = TRUE)
+
+```
+
