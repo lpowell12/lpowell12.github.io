@@ -1,3 +1,3 @@
 ## Test site for d3
 
-playing around to prove this is possible
+playing around with d3 visuals
