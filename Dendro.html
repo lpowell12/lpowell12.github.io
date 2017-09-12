@@ -262,12 +262,14 @@ console.log("root:",root);
 
           tree.sort(function(a, b) {
             if(a.depth===3 & b.depth===3){
-              return b.size < a.size ? -1 : 1;
+              return b.size - a.size;
             }else if(a.depth<3 & b.depth<3){
               return b.name.toLowerCase() < a.name.toLowerCase() ? 1 : -1;
             }
           });
       }
+	    
+
       // Sort the tree initially incase the JSON isn't in a sorted order.
       sortTree();
 
